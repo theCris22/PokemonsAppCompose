@@ -10,7 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.crisnavarro.pokemonsapp.core.NavigationRoutes.*
 import com.crisnavarro.pokemonsapp.ui.theme.PokemonsAppTheme
+import com.crisnavarro.pokemonsapp.ui.theme.screens.PokemonListScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,8 +27,11 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = "") {
-                        composable("") {}
+                    NavHost(
+                        navController = navController,
+                        startDestination = RoutePokemonListScreen.route
+                    ) {
+                        composable(route = RoutePokemonListScreen.route) { PokemonListScreen() }
                     }
                 }
             }
